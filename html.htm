@@ -10,17 +10,15 @@
     <title>Document</title>
 </head>
 <body>
-    $('body').terminal({
-        title: function(...args) {
-            const options = $.terminal.parse_options(args);
-            return fetch(options.url || 'https://terminal.jcubic.pl')
-                .then(r => r.text())
-                .then(html => html.match(/<title>([^>]+)<\/title>/)[1]);
-        }
-    }, {
-        checkArity: false,
-        completion: true,
-        greetings: 'My First Terminal\n'
-    });
+ <script>
+$('body').terminal({
+    hello: function(what) {
+        this.echo('Hello, ' + what +
+                  '. Wellcome to this terminal.');
+    }
+}, {
+    greetings: 'My First Terminal'
+});
+</script>
 </body>
 </html>
