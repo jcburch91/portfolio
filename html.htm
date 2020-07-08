@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+    <script src="https"//unpkg.com/jquery.terminal/js/jquery.terminal.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    $('body').terminal({
+        title: function(...args) {
+            const options = $.terminal.parse_options(args);
+            return fetch(options.url || 'https://terminal.jcubic.pl')
+                .then(r => r.text())
+                .then(html => html.match(/<title>([^>]+)<\/title>/)[1]);
+        }
+    }, {
+        checkArity: false,
+        completion: true,
+        greetings: 'My First Terminal\n'
+    });
+</body>
+</html>
